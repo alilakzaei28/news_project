@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load jalali_tags %}
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="{% block meta_description %}جدیدترین اخبار سیاسی، اقتصادی و ورزشی ایران و جهان در خبرگزاری نیوز ای‌آی{% endblock %}">
+    <meta name="author" content="NewsAI">
+    
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title" content="{% block og_title %}خبرگزاری نیوز ای‌آی | اخبار لحظه‌ای{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}پوشش زنده و لحظه‌ای اخبار ایران و جهان با تحلیل‌های دقیق{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}/static/images/default-share.jpg{% endblock %}">
+    
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request.build_absolute_uri }}">
+    <meta property="twitter:title" content="{% block twitter_title %}خبرگزاری نیوز ای‌آی{% endblock %}">
+    <meta property="twitter:description" content="{% block twitter_description %}جدیدترین اخبار ایران و جهان{% endblock %}">
+    <meta property="twitter:image" content="{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}/static/images/default-share.jpg{% endblock %}">
+
+    <title>{% block title %}خبرگزاری مدرن{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        body { font-family: 'Vazirmatn', sans-serif; background-color: #f8fafc; }
+        /* حذف اسکرول‌بار زشت پیش‌فرض */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased flex flex-col min-h-screen">
+
+    <header class="glass-nav fixed top-0 w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 h-16 flex justify-between items-center">
+            
+            <div class="flex items-center gap-6">
+                <a href="/" class="flex items-center gap-2 group">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-lg rotate-3 group-hover:rotate-0 transition">N</div>
+                    <span class="text-xl font-black tracking-tighter text-slate-900">NEWS<span class="text-blue-600">AI</span></span>
+                </a>
+                
+                <nav class="hidden md:flex space-x-6 space-x-reverse text-sm font-medium text-slate-600">
+                    <a href="{% url 'home' %}" class="hover:text-blue-600 transition py-2">خانه</a>
+                    <a href="{% url 'category_detail' 'سیاست' %}" class="hover:text-blue-600 transition py-2">سیاست</a>
+                    <a href="{% url 'category_detail' 'تکنولوژی' %}" class="hover:text-blue-600 transition py-2">تکنولوژی</a>
+                    <a href="{% url 'category_detail' 'ورزش' %}" class="hover:text-blue-600 transition py-2">ورزش</a>
+                    <a href="{% url 'category_detail' 'اقتصاد' %}" class="hover:text-blue-600 transition py-2">اقتصاد</a>
+                </nav>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <form action="{% url 'search' %}" method="get" class="hidden md:flex items-center bg-slate-100 rounded-full px-3 py-1.5 border border-transparent focus-within:border-blue-300 focus-within:bg-white transition">
+                <input type="text" name="q" autocomplete="off" placeholder="جستجو..." class="bg-transparent border-none focus:outline-none text-sm w-32 lg:w-48 text-slate-700 placeholder-slate-400">
+                <button type="submit" class="text-slate-400 hover:text-blue-600 transition p-1">
+                <i data-lucide="search" class="w-5 h-5"></i>
+                </button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <div class="h-20"></div>
+
+    <main class="flex-grow container mx-auto px-4 py-6 min-h-screen pb-24">
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="bg-slate-900 text-slate-400 py-12 mt-12 border-t border-slate-800">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="col-span-1 md:col-span-2">
+                <h3 class="text-white text-xl font-bold mb-4">NEWS<span class="text-blue-500">AI</span></h3>
+                <p class="text-sm leading-6 mb-4 max-w-sm">ما جدیدترین اخبار را با نگاهی نو و تحلیلی دقیق برای شما فراهم می‌کنیم. هدف ما اطلاع‌رسانی شفاف و سریع است.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">دسترسی سریع</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white transition">درباره ما</a></li>
+                    <li><a href="#" class="hover:text-white transition">تبلیغات</a></li>
+                    <li><a href="#" class="hover:text-white transition">تماس با ما</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">شبکه‌های اجتماعی</h4>
+                <div class="flex space-x-4 space-x-reverse">
+                    <a href="#" class="w-8 h-8 bg-slate-800 rounded flex items-center justify-center hover:bg-blue-600 hover:text-white transition">X</a>
+                    <a href="#" class="w-8 h-8 bg-slate-800 rounded flex items-center justify-center hover:bg-pink-600 hover:text-white transition">In</a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-xs text-slate-600 border-t border-slate-800 pt-6">
+            © ۲۰۲۵ تمامی حقوق محفوظ است. طراحی با ❤️ و جنگو.
+        </div>
+    </footer>
+
+
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+</body>
+</html>

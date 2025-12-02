@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+
+{% block title %}درباره ما - تماس با ما{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden mt-6">
+    
+    <div class="bg-blue-600 p-8 text-center">
+        <h1 class="text-3xl font-bold text-white mb-2">درباره خبرگزاری نیوز ای‌آی</h1>
+        <p class="text-blue-100">صدای حقیقت، سرعت در خبر</p>
+    </div>
+
+    <div class="p-8">
+        <h2 class="text-xl font-bold text-gray-800 mb-4 border-b pb-2">ما چه کسی هستیم؟</h2>
+        <p class="text-gray-600 leading-8 mb-8 text-justify">
+            خبرگزاری نیوز ای‌آی، یک پروژه خبری مدرن است که با هدف اطلاع‌رسانی سریع و دقیق راه‌اندازی شده است. 
+            ما با استفاده از جدیدترین تکنولوژی‌های وب (Django & Python)، تجربه‌ای متفاوت از خواندن اخبار را برای کاربران فراهم می‌کنیم.
+            تیم ما متعهد است که اخبار را بدون جهت‌گیری و با بالاترین کیفیت به دست شما برساند.
+        </p>
+
+        <h2 class="text-xl font-bold text-gray-800 mb-4 border-b pb-2">راه های ارتباطی</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <div class="flex items-center space-x-4 space-x-reverse bg-gray-50 p-4 rounded border">
+                <div class="bg-blue-100 p-3 rounded-full text-2xl">📍</div>
+                <div>
+                    <span class="block font-bold text-gray-700">آدرس دفتر</span>
+                    <span class="text-sm text-gray-500">تهران، میدان آزادی، خیابان آزادی</span>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-4 space-x-reverse bg-gray-50 p-4 rounded border">
+                <div class="bg-green-100 p-3 rounded-full text-2xl">📞</div>
+                <div>
+                    <span class="block font-bold text-gray-700">تلفن تماس</span>
+                    <span class="text-sm text-gray-500">021-12345678</span>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-4 space-x-reverse bg-gray-50 p-4 rounded border">
+                <div class="bg-yellow-100 p-3 rounded-full text-2xl">📧</div>
+                <div>
+                    <span class="block font-bold text-gray-700">ایمیل سازمانی</span>
+                    <span class="text-sm text-gray-500">info@newsai.com</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
